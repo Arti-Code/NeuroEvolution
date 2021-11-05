@@ -1,0 +1,65 @@
+NATURE:
+    0.1:
+        ✔ render loop
+        ✔ pymunk integration
+        ✔ circle-shaped beings
+        ✔ cloud git repository
+        ✔ neural network inside
+        ✔ enviroment perception (simple)
+        ✔ beings movement (neural net based)
+        ✔ beings rotation (neural net based)
+        ✔ collisions between beings
+        ✔ collisions with rocks
+        ✔ edges collisions
+        ✔ seeing (simple)
+        ✔ eating plants
+        ✔ plants growth
+        ✔ plant procreation (simple)
+    0.2:
+        ✔ drawing neural network
+        ✔ move gui from Evolution project (first step)
+        ✔ main Simulation class
+        ✔ create named simulations
+        ✔ save simulations state
+        ✔ load simulations state
+        ✔ creature skills (size, strength, speed, attack)
+        ✔ obstacles detection
+        ✔ obstacles collision
+        ✔ fix: create inside obstacles
+    0.3:
+        ✔ camera movement
+        ✔ gui ('Creatures' based)
+        ✔ attack only ahead
+        ✔ inherite
+        ✔ mutations
+        ✔ gui based ranking
+        ✔ fix: saving state
+        ✔ fix: loading state
+        ✔ performance issue
+        ✔ compilation to executable
+        ✔ meat
+    0.4:
+        ✔ config from .py to .json
+        ✔ species
+        ✔ similarity
+        ✔ memory neurons
+        ✔ update settings during sim runs
+        ✔ creatures info window
+        ✔ save ranking also
+        ✔ fix: dt
+    0.5:    
+        ☐ health and energy
+        ✔ water needs
+        ☐ save single creature
+        ☐ load single creature
+        ☐ save single network
+        ☐ load single network
+        ☐ delete single projects
+        ☐ real-time bokeh network display
+        ☐ camera zoom in/out
+        ✔ terrain: perlin-noise list
+        ✔ terrain: ground Surface
+        ✔ terrain: interactions
+        ✔ water terrain, slowing, drawing
+        ✔ ancestor trackink
+        ✔ save&load with ancestors

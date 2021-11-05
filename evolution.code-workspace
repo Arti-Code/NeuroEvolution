@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"cSpell.ignoreWords": [
+			"fizjo",
+			"phisionomy"
+		],
+		"cSpell.words": [
+			"fizjo",
+			"phisionomy",
+			"rpos"
+		],
+		"todo-tree.tree.showBadges": true
+	}
+}
