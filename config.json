@@ -57,5 +57,6 @@
   "WATER_MOVE": 0.25,
   "WATER_NEEDS": 0.0005,
   "WATER": 2,
+  "TILE_RES": 10,
   "NET": [22, 0, 0, 0, 6, 0, 0, 0, 0, 7]
 }

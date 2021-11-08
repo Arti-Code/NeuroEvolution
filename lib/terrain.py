@@ -26,34 +26,21 @@ class Tile(Rect):
         self.occupied: bool= False
         self.water = water
 
-    def draw(self, surface: Surface, water_level: float=0.4):
+    def draw(self, surface: Surface):
         if self.occupied:
             gfxdraw.rectangle(surface, self, Color('yellow'))
             return
-        water_level = clamp(water_level, 0.0, 1.0)
         height = self.depth
-        #height = round((height+1), 1)
-        #water = water_level - height
         color = Color(0, 0, 0)
         if self.water <= 0.0:
             color = Color(int(75+154*height), int(75+154*height), int(75+154*height))
         elif self.water <= 0.2:
             color = Color(int(100), int(100), int(184+70*self.water))
-            #self.water = 1
         elif self.water <= 0.4:
             color = Color(int(20), int(20), int(200+50*self.water))
         else:
             color = Color(int(10), int(10), int(100+100*self.water))
-            #self.water = 1
         gfxdraw.box(surface, self, color)
-        #if c2 > water_level:
-        #    height = c2
-        #    color = Color(int(255*c2), int(255*c2), int(255*c2))
-        #else:
-        #    depth = (c2*200)/water_level
-        #    color = Color(0, 0, int(35+depth))
-        #gfxdraw.box(surface, self, color)
-        #gfxdraw.rectangle(surface, self, Color('gray'))
 
     def is_water(self) -> tuple:
         if self.water > 0:
@@ -80,17 +67,6 @@ class Water(Rect):
     def kill(self):
         self.kill()
 
-    #def get_tiles_arround(self) -> list:
-    #    x = self.position.x, y=self.position.y
-    #    tiles = list(
-    #        (x-1, y-1), (x, y-1), (x+1, y-1)
-    #        (x-1, y), (x+1, y)
-    #        (x-1, y+1), (x, y+1), (x+1, y+1)
-    #    )
-    #    return tiles
-#
-    #def update(self, water: list):
-        pass
 
 class Terrain():
 
@@ -116,6 +92,7 @@ class Terrain():
             for x in range(x_axe):
                 pix = noise1([x/x_axe, y/y_axe])
                 pix += 0.5 * noise2([x/x_axe, y/y_axe])
+                pix = (pix+1)/2
                 height = round(pix, 1)
                 row.append(height)
                 water_edge = round(water_lvl-height, 1)
@@ -133,7 +110,7 @@ class Terrain():
         terrain = Surface(self.world_size)
         for y_tiles in self.tiles:
             for tile in y_tiles:
-                tile.draw(terrain, 0.4)
+                tile.draw(terrain)
         return terrain
 
     def draw_water(self) -> Surface:
@@ -196,7 +173,8 @@ class Terrain():
         title = self.get_tile(position)
         if title.is_water(): return True
         return False
-class Terrain2():
+
+""" class Terrain2():
 
     def __init__(self):
         self.terrain_surface: Surface=None
@@ -208,7 +186,6 @@ class Terrain2():
         self.generate_physic_terrain(space, world_size)
 
     def make_noise_map(self, world_size: tuple, res: int, noise_list: list[tuple]) -> list:
-        """@param: noise_list: list of single noises described as tuple of octaves: int, influence: float between 0.0 - 1.0"""
         terrain = []
         noises = []
         for noise_params in noise_list:
@@ -263,5 +240,5 @@ class Terrain2():
             line = autogeometry.simplify_curves(polyline, 0.25)
             poly = Poly(space.static_body, autogeometry.to_convex_hull(line, 0.5))
             poly.collision_type = 8
-            space.add(poly)
+            space.add(poly) """
 

@@ -26,7 +26,7 @@ from lib.meat import Meat
 from lib.utils import log_to_file
 from lib.camera import Camera
 from lib.statistics import Statistics
-from lib.terrain import Terrain, Terrain2
+from lib.terrain import Terrain
 
 class Simulation():
 
@@ -75,7 +75,7 @@ class Simulation():
         self.statistics = Statistics()
         self.statistics.add_collection('populations', ['plants', 'herbivores', 'carnivores'])
         self.populations = {'period': 0, 'plants': [], 'herbivores': [], 'carnivores': []}
-        self.terrain = Terrain((cfg.WORLD[0], cfg.WORLD[0]), 10, 0.15, (4, 8))
+        self.terrain = Terrain((cfg.WORLD[0], cfg.WORLD[0]), cfg.TILE_RES, 0.0, (2, 8))
         #self.terrain.generate(self.space, cfg.WORLD, 1)  #
         self.terrain_surf = self.terrain.draw_tiles()
         self.terrain_surf.set_alpha(255)
@@ -415,7 +415,7 @@ class Simulation():
     def update_creatures(self, dt: float):
         ### CHECK ENERGY ###
         for creature in self.creature_list:
-            if creature.energy <= 0 or creature.water <= 0:
+            if creature.energy <= 0:
                 self.add_to_ranking(creature)
                 if not creature.on_water:
                     meat = Meat(screen=self.screen, space=self.space, position=creature.position, collision_tag=10, radius=creature.size, energy=creature.max_energy)
